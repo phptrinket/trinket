@@ -36,23 +36,23 @@ $this->title = 'Trinket';
 
         <div class="row">
             <div class="col-lg-4">
-                <h2>Produto</h2>
+                <h2></h2>
 
-                <p>oi</p>
+                <p></p>
 
 
 
 
             </div>
             <div class="col-lg-4">
-                <h2>Placeholder</h2>
+                <h2></h2>
 
                 <p></p>
 
 
             </div>
             <div class="col-lg-4">
-                <h2>Placeholder</h2>
+                <h2></h2>
 
                 <p>
 
