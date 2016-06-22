@@ -11,6 +11,8 @@ use Yii;
  * @property string $username
  * @property string $email
  * @property string $senha
+ *
+ * @property Proposta[] $propostas
  */
 class Usuario extends \yii\db\ActiveRecord
 {
@@ -29,9 +31,8 @@ class Usuario extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'email', 'senha'], 'required'],
-            [['username'], 'string', 'max' => 45],
-            [['email'], 'string', 'max' => 255],
-            [['senha'], 'string', 'max' => 12],
+            [['username'], 'string', 'max' => 255],
+            [['email', 'senha'], 'string', 'max' => 60],
         ];
     }
 
@@ -46,5 +47,13 @@ class Usuario extends \yii\db\ActiveRecord
             'email' => 'Email',
             'senha' => 'Senha',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPropostas()
+    {
+        return $this->hasMany(Proposta::className(), ['id_usuario' => 'id']);
     }
 }

@@ -17,7 +17,6 @@ class ProdutoController extends Controller
     /**
      * @inheritdoc
      */
-
     public function behaviors()
     {
         return [
@@ -93,7 +92,6 @@ class ProdutoController extends Controller
             ]);
         }
     }
-    
 
     /**
      * Deletes an existing Produto model.

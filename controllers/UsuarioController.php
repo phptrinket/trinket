@@ -64,7 +64,7 @@ class UsuarioController extends Controller
     public function actionCreate()
     {
         $model = new Usuario();
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['site/login', 'id' => $model->id]);
         } else {

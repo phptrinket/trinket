@@ -10,6 +10,9 @@ use Yii;
  * @property integer $id
  * @property string $nome
  * @property string $descricao
+ * @property string $imagem
+ *
+ * @property Proposta[] $propostas
  */
 class Produto extends \yii\db\ActiveRecord
 {
@@ -27,14 +30,10 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao'], 'required'],
-            [['nome', 'descricao'], 'string', 'max' => 255],
-
-
+            [['nome', 'descricao', 'imagem'], 'required'],
+            [['nome', 'descricao', 'imagem'], 'string', 'max' => 255],
         ];
     }
-
-
 
     /**
      * @inheritdoc
@@ -44,9 +43,16 @@ class Produto extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nome' => 'Nome',
-            'descricao' => 'Descrição',
-            'image' => 'Imagem',
-           
+            'descricao' => 'Descricao',
+            'imagem' => 'Imagem',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPropostas()
+    {
+        return $this->hasMany(Proposta::className(), ['id_produto' => 'id']);
     }
 }

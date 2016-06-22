@@ -15,17 +15,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
-    
 
-
-    <div class="form-group">
-        <label for="exampleInput"> Adicionar Foto</label>
-        <input type="file" id="exampleInputFile">
-
-    </div>
+    <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Salvar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
