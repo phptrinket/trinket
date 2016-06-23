@@ -21,8 +21,8 @@ $this->title = 'Trinket';
         <h1>Bem vindo a Trinket</h1>
 
         <p class="lead">Um site feito para trocas de forma rápida, segura e inteligente.</p>
-        
 
+    ola l
         <p>
             <?= Html::a('Cadastre-se', ['usuario/create'], ['class' => 'btn  btn-lg btn-primary']) ?>
         </p>
