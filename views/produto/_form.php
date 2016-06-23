@@ -16,7 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'imagem')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'imagem')->fileInput(['maxlength' => true]) ?>
+    
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Cadastrar' : 'Atualizar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
