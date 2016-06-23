@@ -121,4 +121,19 @@ class ProdutoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+public function actionUpload()
+{
+    $model = new UploadForm();
+
+    if (Yii::$app->request->isPost) {
+        $model->imagem = UploadedFile::getInstance($model, 'imagem');
+        if ($model->upload()) {
+            // file is uploaded successfully
+            return;
+        }
+    }
+
+    return $this->render('upload', ['model' => $model]);
+}
 }

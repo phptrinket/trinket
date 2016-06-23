@@ -16,13 +16,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'imagem')->fileInput(['maxlength' => true]) ?>
-    
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+
+    <?= $form->field($model, 'imagem')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Cadastrar' : 'Atualizar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+
+    <?php ActiveForm::end() ?>
+    
+
+
 
 </div>
