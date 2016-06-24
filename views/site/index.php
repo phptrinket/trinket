@@ -22,10 +22,11 @@ $this->title = 'Trinket';
 
         <p class="lead">Um site feito para trocas de forma rápida, segura e inteligente.</p>
 
-    ola l
+        <?php if (Yii::$app->user->isGuest) { ?>
         <p>
             <?= Html::a('Cadastre-se', ['usuario/create'], ['class' => 'btn  btn-lg btn-primary']) ?>
         </p>
+        <?php } ?>
 
 
 
