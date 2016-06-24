@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Deletar', ['delete', 'id' => $model->id], [
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Excluir produto?',
@@ -34,39 +34,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'imagem',
         ],
     ]) ?>
-
-
-    <?php $this->widget('zii.widgets.CDetailView', array(
-        
-    'data'=>$model,
-
-    'attributes'=>array(
-
-        array(
-
-            'name'=>'photo_id',
-
-            'type'=>'raw',
-
-            'value'=>$model->showphoto_from_database(),
-
-        ),
-
-        array(
-
-            'name'=>'vproof_id',
-
-            'type'=>'raw',
-
-            'value'=>$model->showproof_from_image_folder(),
-
-        )
-
-    ),
-
-)); ?>
-
-
-
 
 </div>
