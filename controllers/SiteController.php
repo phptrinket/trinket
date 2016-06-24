@@ -54,6 +54,11 @@ class SiteController extends Controller
                 'sucessCallBack' => [$this, 'successCallBack'],
 
             ],
+                'auth' => [
+                    'class' => 'yii\authclient\AuthAction',
+                    'successCallback' => [$this, 'oAuthSuccess'],
+                ],
+
         ];
     }
 
@@ -107,5 +112,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function oAuthSuccess($client) {
+        // get user data from client
+        $userAttributes = $client->getUserAttributes();
+
+        // do some thing with user data. for example with $userAttributes['email']
+    }
 
 }

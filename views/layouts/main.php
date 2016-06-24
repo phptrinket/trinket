@@ -42,7 +42,6 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Sobre', 'url' => ['/site/about']],
             ['label' => 'Contato', 'url' => ['/site/contact']],
-            ['label' => 'Produtos', 'url' => ['produto/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -52,6 +51,7 @@ AppAsset::register($this);
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
+
                 . Html::endForm()
                 . '</li>'
             )
@@ -69,10 +69,12 @@ AppAsset::register($this);
 </div>
 
 <footer class="footer">
+
     <div class="container">
+        
         <p class="pull-left">&copy; Trinket <?= date('Y') ?></p>
 
-        <p class="pull-right"> Daizi/Marco/Mazen/Selene</p>
+        <p class="pull-right"><b> Daizi / Marco / Mazen / Selene</b></p>
     </div>
 
     <?php
@@ -83,6 +85,7 @@ AppAsset::register($this);
     ?>
 
 </footer>
+
 
 <?php $this->endBody() ?>
 </body>

@@ -38,14 +38,18 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'authUrl' => 'https://www.facebook.com/dialog/oauth?display=popup',
+                    'clientId' => '1549346198708666',
+                    'clientSecret' => 'dafbcaff6dce0720804c1383c319cd12',
+                ],
             ],
         ],
-        */
       
     ],
     'params' => $params,
