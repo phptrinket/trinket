@@ -70,7 +70,9 @@ AppAsset::register($this);
 
 <footer class="footer">
 
+
     <div class="container">
+        
         
         <p class="pull-left">&copy; Trinket <?= date('Y') ?></p>
 
@@ -85,6 +87,7 @@ AppAsset::register($this);
     ?>
 
 </footer>
+
 
 
 <?php $this->endBody() ?>
