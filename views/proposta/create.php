@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Proposta */
 
-$this->title = 'Create Proposta';
+$this->title = 'Fazer Proposta';
 $this->params['breadcrumbs'][] = ['label' => 'Propostas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

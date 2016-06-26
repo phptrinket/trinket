@@ -63,6 +63,9 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
                 ['label' => 'Cadastrar Produtos', 'url' => ['/produto/create']],
+                ['label' => 'Fazer Proposta', 'url' => ['/proposta/create']],
+                ['label' => 'Propostas', 'url' => ['/proposta/index']],
+
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
                 ) : (
