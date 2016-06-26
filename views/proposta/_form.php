@@ -10,17 +10,25 @@ use yii\widgets\ActiveForm;
 
 <div class="proposta-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin() ?>
 
-    <?= $form->field($model, 'id_usuario')->textInput() ?>
+    <?= $model->id_usuario = Yii::$app->user->id ?>
 
-    <?= $form->field($model, 'id_produto')->textInput() ?>
+    <?= $model-> id_produto = Yii::$app->request->get('id_produto') ?>
 
     <?= $form->field($model, 'comentario')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data_oferta')->textInput() ?>
+    <?php
+        // Formatando a data para que seja legivel
+        $data = getdate();
 
-    <?= $form->field($model, 'data_conclusao')->textInput() ?>
+        $dia = $data['mday'];
+        $mes = $data['mon'];
+        $ano = $data['year'];
+
+        $model->data_oferta = $dia.'-'.$mes.'-'.$ano;
+
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Enviar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>

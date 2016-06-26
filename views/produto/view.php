@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-
-   
+    <p style="text-align: right">
+        <?= Html::a('Fazer proposta!!', ['proposta/create', $model->propostas, 'id_produto' => $model->id ], ['class' => 'btn btn-primary']) ?>
+    </p>
 
 </div>
