@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 
 
-$this->title = 'Trinket Produto';
+$this->title = 'Cadastrar Produto';
 $this->params['breadcrumbs'][] = ['label' => 'Produtos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
