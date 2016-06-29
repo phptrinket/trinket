@@ -3,9 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2016 at 07:59 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.21
+-- Generation Time: 29-Jun-2016 às 02:46
+-- Versão do servidor: 10.1.13-MariaDB
+-- PHP Version: 5.5.35
+
+DROP TABLE proposta;
+DROP TABLE produto;
+DROP TABLE usuario;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +27,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produto`
+-- Estrutura da tabela `produto`
 --
 
 CREATE TABLE `produto` (
@@ -33,10 +37,17 @@ CREATE TABLE `produto` (
   `imagem` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `nome`, `descricao`, `imagem`) VALUES
+  (1, 'mouse', 'rato', 'images.jpg');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proposta`
+-- Estrutura da tabela `proposta`
 --
 
 CREATE TABLE `proposta` (
@@ -45,13 +56,30 @@ CREATE TABLE `proposta` (
   `id_produto` int(11) NOT NULL,
   `comentario` varchar(255) NOT NULL,
   `data_oferta` date NOT NULL,
-  `data_conclusao` date NOT NULL
+  `data_conclusao` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `proposta`
+--
+
+INSERT INTO `proposta` (`id`, `id_usuario`, `id_produto`, `comentario`, `data_oferta`, `data_conclusao`) VALUES
+  (3, 3, 1, 'oooooooooooooooooooooooooo', '0000-00-00', '0000-00-00'),
+  (4, 3, 1, 'adasdasdasd', '0000-00-00', '0000-00-00'),
+  (5, 3, 1, 'asdasdasdasd', '0000-00-00', '0000-00-00'),
+  (6, 3, 1, 'asdasdasdasd', '0000-00-00', '0000-00-00'),
+  (7, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
+  (8, 3, 1, '44444444444444', '0000-00-00', '0000-00-00'),
+  (9, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
+  (10, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
+  (11, 3, 1, 'sdasdasdas', '2016-06-29', '2016-06-29'),
+  (12, 3, 1, 'asdasdasjfewhlrwkcndbznbcnklwqgfhdaspbhj', '2016-06-29', NULL),
+  (13, 3, 1, 'asdasdasdasd', '2016-06-29', '2016-06-29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -62,11 +90,13 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `username`, `email`, `senha`) VALUES
-(1, 'mazen', 'mazen@mz', '1234');
+  (1, 'mazen', 'mazen@mz', '1234'),
+  (2, 'Mazen', 'mazen', '12345678'),
+  (3, 'Daizi', 'daizi', '1234');
 
 --
 -- Indexes for dumped tables
@@ -100,23 +130,23 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `proposta`
 --
 ALTER TABLE `proposta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `proposta`
+-- Limitadores para a tabela `proposta`
 --
 ALTER TABLE `proposta`
   ADD CONSTRAINT `proposta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),

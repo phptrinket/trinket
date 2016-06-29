@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\DataAtual;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Proposta */
@@ -12,19 +13,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_usuario')->textInput() ?>
-
-    <?= $form->field($model, 'id_produto')->textInput() ?>
-
-    <?= $form->field($model, 'comentario')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'data_oferta')->textInput() ?>
-
-    <?= $form->field($model, 'data_conclusao')->textInput() ?>
+    <?= $form->field($model, 'comentario')->textarea(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+    
+    <?= $form->field($model, 'id_usuario')->hiddenInput(['value' => Yii::$app->user->getId()])->label('') ?>
+
+    <?= $form->field($model, 'id_produto')->hiddenInput(['value' =>  Yii::$app->getRequest()->getQueryParam('id_produto')])->label('') ?>
+
+    <?= $form->field($model, 'data_oferta')->hiddenInput(['value' => DataAtual::getData()])->label('') ?>
 
     <?php ActiveForm::end(); ?>
 

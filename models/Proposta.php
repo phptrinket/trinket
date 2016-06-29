@@ -33,7 +33,7 @@ class Proposta extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario', 'id_produto', 'comentario', 'data_oferta', 'data_conclusao'], 'required'],
+            [['id_usuario', 'id_produto', 'comentario', 'data_oferta'], 'required'],
             [['id_usuario', 'id_produto'], 'integer'],
             [['data_oferta', 'data_conclusao'], 'safe'],
             [['comentario'], 'string', 'max' => 255],
