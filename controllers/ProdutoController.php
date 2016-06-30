@@ -74,7 +74,7 @@ class ProdutoController extends Controller
             $model->imagem = $model->file->name;
 
             if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index', 'id' => $model->id]);
             }
         }
 

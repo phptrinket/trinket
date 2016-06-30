@@ -16,7 +16,7 @@ use app\models\DataAtual;
     <?= $form->field($model, 'comentario')->textarea(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Enviar' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     </div>
     
     <?= $form->field($model, 'id_usuario')->hiddenInput(['value' => Yii::$app->user->getId()])->label('') ?>

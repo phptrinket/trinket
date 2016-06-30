@@ -51,7 +51,7 @@ class Proposta extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_usuario' => 'Id Usuario',
             'id_produto' => 'Id Produto',
-            'comentario' => 'Comentario',
+            'comentario' => 'Comentário',
             'data_oferta' => 'Data Oferta',
             'data_conclusao' => 'Data Conclusao',
         ];
