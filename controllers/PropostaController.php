@@ -66,7 +66,7 @@ class PropostaController extends Controller
         $model = new Proposta();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['produto/view', 'id' => $model->id_produto]);
         } else {
             return $this->render('create', [
                 'model' => $model,

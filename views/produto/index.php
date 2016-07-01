@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProdutoSearch */
@@ -15,28 +15,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Cadastrar Produto', ['create'], ['class' => 'btn btn-primary']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-//        'filterModel' => $searchModel,
-        'columns' => [
-
-
-
-            'nome',
-            'descricao',
-            [
-                'attribute' => 'imagem',
-                'format' => 'html',
-                'label' => 'Imagem',
-                'value' => function ($data) {
-                    return Html::img('image/' . $data->imagem,
-                        ['width' => '300px', 'margin-left' => '250px']);
-                },
-            ],
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+   <?php foreach($dataProvider->models as $produto): ?>
+    <div class="col-md-4 portfolio-item">
+        <a href="?r=proposta%2Fcreate&id_produto=<?=$produto->id?>">
+            <?php
+                $placeholder = "http://placehold.it/700x400";
+                $file = 'image/' . $produto->imagem;
+            ?>
+            <img class="img-responsive" src="<?= file_exists($file) ? $file : $placeholder ?>" alt="Imagem não disponivel"/>
+        </a>
+        <h3>
+            <?= Html::a($produto->nome,['proposta/create','id_produto' => $produto->id]) ?>
+        </h3>
+        <p><?=$produto->descricao?></p>
+    </div>
+    <?php endforeach; ?>
 </div>
