@@ -12,7 +12,7 @@ use Yii;
  * @property string $nome
  * @property string $descricao
  * @property string $imagem
- *
+ * @property string $status
  * @property Usuario $idUsuario
  * @property Proposta[] $propostas
  */
@@ -33,9 +33,9 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_usuario', 'nome', 'descricao', 'imagem'], 'required'],
+            [['id_usuario', 'nome', 'descricao', 'imagem', 'status'], 'required'],
             [['id_usuario'], 'integer'],
-            [['nome', 'descricao', 'imagem'], 'string', 'max' => 255],
+            [['nome', 'descricao', 'imagem', 'status'], 'string', 'max' => 255],
             [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['id_usuario' => 'id']],
             [['file'], 'file'],
         ];
@@ -52,6 +52,7 @@ class Produto extends \yii\db\ActiveRecord
             'nome' => 'Nome',
             'descricao' => 'Descrição',
             'imagem' => 'Imagem',
+            'status' => 'Status',
         ];
     }
 
