@@ -7,6 +7,11 @@
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
+DROP TABLE propost;
+DROP TABLE produto;
+DROP TABLE usuario;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
