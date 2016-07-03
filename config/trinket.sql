@@ -7,7 +7,7 @@
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
-DROP TABLE propost;
+DROP TABLE proposta;
 DROP TABLE produto;
 DROP TABLE usuario;
 
