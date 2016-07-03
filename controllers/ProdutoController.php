@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
 
+
 /**
  * ProdutoController implements the CRUD actions for Produto model.
  */
@@ -101,6 +102,19 @@ class ProdutoController extends Controller
             ]);
         }
     }
+
+    public function actionStatus($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->status = 'Vendido';
+
+        $model->save();
+
+        return $this->redirect(['produto/index']);
+    }
+
+
 
     /**
      * Deletes an existing Produto model.

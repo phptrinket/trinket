@@ -25,6 +25,9 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?= $form->field($model, 'id_usuario')->hiddenInput(['value' => Yii::$app->user->getId()])->label('') ?>
+
+    <?= $form->field($model, 'status')->hiddenInput(['value' => 'Ativo' ])->label('') ?>
+
     <?php ActiveForm::end() ?>
 
 

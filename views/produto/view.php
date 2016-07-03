@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p><?= $proposta->comentario ?></p>
                 <?php if((Yii::$app->user->id) != ($proposta->id_usuario)) { ?>
                     <div class="text-left">
-                        <?= Html::a('Aceitar proposta', Url::to(['proposta/accept', 'id' => $proposta->id]), [
+                        <?= Html::a('Aceitar proposta', Url::to(['produto/status', 'id' => $model->id]), [
                             'class' => 'btn btn-success',
                             'data' => [
                                 'confirm' => 'Tem certeza que quer aceitar essa proposta?',

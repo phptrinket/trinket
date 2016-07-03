@@ -10,6 +10,7 @@ use app\models\PropostaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 
 /**
  * PropostaController implements the CRUD actions for Proposta model.
@@ -122,7 +123,7 @@ class PropostaController extends Controller
 
         $model->save();
 
-        return $this->redirect(['produto/index']);
+        return $this->redirect('produto/status',['id' => $model->id_produto]);
     }
 
     /**

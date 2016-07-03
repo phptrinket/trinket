@@ -3,13 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29-Jun-2016 às 02:46
--- Versão do servidor: 10.1.13-MariaDB
--- PHP Version: 5.5.35
-
-DROP TABLE proposta;
-DROP TABLE produto;
-DROP TABLE usuario;
+-- Generation Time: Jul 04, 2016 at 01:06 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,27 +23,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Table structure for table `produto`
 --
 
 CREATE TABLE `produto` (
   `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `descricao` varchar(255) NOT NULL,
-  `imagem` varchar(255) NOT NULL
+  `imagem` varchar(255) NOT NULL,
+  `status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `produto`
+-- Dumping data for table `produto`
 --
 
-INSERT INTO `produto` (`id`, `nome`, `descricao`, `imagem`) VALUES
-  (1, 'mouse', 'rato', 'images.jpg');
+INSERT INTO `produto` (`id`, `id_usuario`, `nome`, `descricao`, `imagem`, `status`) VALUES
+(2, 1, 'Mazen', 'Ahoyasdasd', 'lakasd.jpg', NULL),
+(3, 1, 'AEW CARALHO', 'MAS PUTA QUE PARIU DEU CERTO', 'MARGARINA.jpg', NULL),
+(4, 1, 'asdasd', 'asadasd', 'MARGARINA.jpg', NULL),
+(5, 1, 'Martelo', 'qebra o galho', 'martelo.png', 'Vendido');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `proposta`
+-- Table structure for table `proposta`
 --
 
 CREATE TABLE `proposta` (
@@ -60,26 +61,40 @@ CREATE TABLE `proposta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `proposta`
+-- Dumping data for table `proposta`
 --
 
 INSERT INTO `proposta` (`id`, `id_usuario`, `id_produto`, `comentario`, `data_oferta`, `data_conclusao`) VALUES
-  (3, 3, 1, 'oooooooooooooooooooooooooo', '0000-00-00', '0000-00-00'),
-  (4, 3, 1, 'adasdasdasd', '0000-00-00', '0000-00-00'),
-  (5, 3, 1, 'asdasdasdasd', '0000-00-00', '0000-00-00'),
-  (6, 3, 1, 'asdasdasdasd', '0000-00-00', '0000-00-00'),
-  (7, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
-  (8, 3, 1, '44444444444444', '0000-00-00', '0000-00-00'),
-  (9, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
-  (10, 3, 1, 'asdasdasd', '0000-00-00', '0000-00-00'),
-  (11, 3, 1, 'sdasdasdas', '2016-06-29', '2016-06-29'),
-  (12, 3, 1, 'asdasdasjfewhlrwkcndbznbcnklwqgfhdaspbhj', '2016-06-29', NULL),
-  (13, 3, 1, 'asdasdasdasd', '2016-06-29', '2016-06-29');
+(3, 1, 2, 'çlamsdashdlkasjdqwe', '2016-07-03', NULL),
+(4, 1, 3, 'hahsayashdyashdysad', '2016-07-03', NULL),
+(5, 2, 3, 'QUALE DESSA PORRA AI', '2016-07-03', '2016-07-03'),
+(6, 1, 3, 'NADA DA SUA CONTA', '2016-07-03', NULL),
+(7, 1, 3, 'MAS QUE CARALHOS', '2016-07-03', NULL),
+(8, 1, 3, 'asdasd', '2016-07-03', NULL),
+(9, 1, 2, 'asdasdasd', '2016-07-03', NULL),
+(10, 1, 4, 'asdasd', '2016-07-03', NULL),
+(11, 1, 5, '15zao nessa porra', '2016-07-03', NULL),
+(12, 2, 5, 'RIARIARIAIARIRIAIRIAR QUE EMRDA', '2016-07-03', '2016-07-03'),
+(13, 1, 5, 'mas claro', '2016-07-03', NULL),
+(14, 1, 5, 'AE PORRA', '2016-07-03', NULL),
+(15, 1, 5, 'AE PORRA', '2016-07-03', NULL),
+(16, 2, 5, 'AE', '2016-07-03', '2016-07-03'),
+(17, 1, 5, 'Oi\r\n', '2016-07-03', NULL),
+(18, 1, 5, 'ae', '2016-07-03', NULL),
+(19, 1, 5, 'AE', '2016-07-03', NULL),
+(20, 1, 5, 'Asd', '2016-07-03', NULL),
+(21, 1, 5, 'AASDASDASDSA', '2016-07-03', NULL),
+(22, 1, 5, 'PORRA', '2016-07-03', NULL),
+(23, 1, 5, 'AE', '2016-07-03', NULL),
+(24, 1, 5, 'ae', '2016-07-03', NULL),
+(25, 1, 5, 'ae', '2016-07-03', NULL),
+(26, 1, 5, 'ae', '2016-07-03', NULL),
+(27, 1, 5, 'aaeasdasd', '2016-07-03', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -90,13 +105,12 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Dumping data for table `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `username`, `email`, `senha`) VALUES
-  (1, 'mazen', 'mazen@mz', '1234'),
-  (2, 'Mazen', 'mazen', '12345678'),
-  (3, 'Daizi', 'daizi', '1234');
+(1, 'mazen', 'mazen', '1234'),
+(2, 'mazen2', 'mazen2@mazen', '1234');
 
 --
 -- Indexes for dumped tables
@@ -106,7 +120,8 @@ INSERT INTO `usuario` (`id`, `username`, `email`, `senha`) VALUES
 -- Indexes for table `produto`
 --
 ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indexes for table `proposta`
@@ -130,27 +145,33 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `proposta`
 --
 ALTER TABLE `proposta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Limitadores para a tabela `proposta`
+-- Constraints for table `produto`
+--
+ALTER TABLE `produto`
+  ADD CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `proposta`
 --
 ALTER TABLE `proposta`
-  ADD CONSTRAINT `proposta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  ADD CONSTRAINT `proposta_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`);
+  ADD CONSTRAINT `proposta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `proposta_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
