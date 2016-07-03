@@ -26,15 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?php foreach($model->propostas as $proposta): ?>
-
         <div class="well">
-            <p><?= $proposta->comentario ?></p>
 
+            <p>
             <div class="text-left">
-                <a class="btn btn-primary">Aceitar Proposta</a>
-                <a class="btn btn-danger">Rejeitar Proposta</a>
+                <b><?= 'Anônimo '.$proposta->id_usuario ?></b>
+                <b style="float: right"><?= $proposta->data_oferta ?></b>
             </div>
-
+            </p>
+            <hr>
+            <p><?= $proposta->comentario ?></p>
+            <?php if((Yii::$app->user->id) != ($proposta->id_usuario)) { ?>
+                <div class="text-left">
+                    <a class="btn btn-primary">Aceitar Proposta</a>
+                    <a class="btn btn-danger">Rejeitar Proposta</a>
+                </div>
+            <?php } ?>
         </div>
         <?php endforeach; ?>
     </div>
