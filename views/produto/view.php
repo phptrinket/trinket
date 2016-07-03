@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -36,10 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
             <hr>
             <p><?= $proposta->comentario ?></p>
-            <?php if((Yii::$app->user->id) != ($proposta->id_usuario)) { ?>
+            <?php if((Yii::$app->user->id) == ($proposta->id_usuario)) { ?>
                 <div class="text-left">
-                    <a class="btn btn-primary">Aceitar Proposta</a>
-                    <a class="btn btn-danger">Rejeitar Proposta</a>
+                    <?= Html::a('Excluir proposta', Url::to(['proposta/delete', 'id' => $proposta->id]), [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => 'Tem certeza que quer excluir essa proposta?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
                 </div>
             <?php } ?>
         </div>
