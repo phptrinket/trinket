@@ -26,30 +26,64 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <?php foreach($model->propostas as $proposta): ?>
-        <div class="well">
+        <?php if(Yii::$app->user->id == $model->id_usuario) { ?>
+            <?php foreach($model->propostas as $proposta): ?>
+            <div class="well">
 
-            <p>
-            <div class="text-left">
-                <b><?= 'Anônimo '.$proposta->id_usuario ?></b>
-                <b style="float: right"><?= $proposta->data_oferta ?></b>
-            </div>
-            </p>
-            <hr>
-            <p><?= $proposta->comentario ?></p>
-            <?php if((Yii::$app->user->id) == ($proposta->id_usuario)) { ?>
+                <p>
                 <div class="text-left">
-                    <?= Html::a('Excluir proposta', Url::to(['proposta/delete', 'id' => $proposta->id]), [
-                        'class' => 'btn btn-danger',
-                        'data' => [
-                            'confirm' => 'Tem certeza que quer excluir essa proposta?',
-                            'method' => 'post',
-                        ],
-                    ]) ?>
+                    <b><?= 'Anônimo '.$proposta->id_usuario ?></b>
+                    <b style="float: right"><?= $proposta->data_oferta ?></b>
                 </div>
-            <?php } ?>
-        </div>
-        <?php endforeach; ?>
+                </p>
+                <hr>
+                <p><?= $proposta->comentario ?></p>
+                <?php if((Yii::$app->user->id) != ($proposta->id_usuario)) { ?>
+                    <div class="text-left">
+                        <?= Html::a('Aceitar proposta', Url::to(['proposta/accept', 'id' => $proposta->id]), [
+                            'class' => 'btn btn-success',
+                            'data' => [
+                                'confirm' => 'Tem certeza que quer aceitar essa proposta?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
+                        <?= Html::a('Excluir proposta', Url::to(['proposta/delete', 'id' => $proposta->id]), [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => 'Tem certeza que quer excluir essa proposta?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <?php endforeach; ?>
+        <?php } else { ?>
+            <?php foreach($model->propostas as $proposta): ?>
+                <div class="well">
+
+                    <p>
+                    <div class="text-left">
+                        <b><?= 'Anônimo '.$proposta->id_usuario ?></b>
+                        <b style="float: right"><?= $proposta->data_oferta ?></b>
+                    </div>
+                    </p>
+                    <hr>
+                    <p><?= $proposta->comentario ?></p>
+                    <?php if((Yii::$app->user->id) == ($proposta->id_usuario)) { ?>
+                        <div class="text-left">
+                            <?= Html::a('Excluir proposta', Url::to(['proposta/delete', 'id' => $proposta->id]), [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => 'Tem certeza que quer excluir essa proposta?',
+                                    'method' => 'post',
+                                ],
+                            ]) ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php endforeach; ?>
+        <?php } ?>
     </div>
 
 </div>

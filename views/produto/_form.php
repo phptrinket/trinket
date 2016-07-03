@@ -24,10 +24,8 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton($model->isNewRecord ? 'Cadastrar' : 'Atualizar', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-primary']) ?>
     </div>
 
-
+    <?= $form->field($model, 'id_usuario')->hiddenInput(['value' => Yii::$app->user->getId()])->label('') ?>
     <?php ActiveForm::end() ?>
-    
-
 
 
 </div>

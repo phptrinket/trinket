@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\DataAtual;
+use app\models\Produto;
 use Yii;
 use app\models\Proposta;
 use app\models\PropostaSearch;
@@ -102,6 +104,23 @@ class PropostaController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        return $this->redirect(['produto/index']);
+    }
+
+    /**
+     * Accepts an existing Proposta model.
+     * If accept is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionAccept($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->data_conclusao = DataAtual::getData();
+
+        $model->save();
 
         return $this->redirect(['produto/index']);
     }

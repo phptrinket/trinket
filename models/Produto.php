@@ -8,10 +8,12 @@ use Yii;
  * This is the model class for table "produto".
  *
  * @property integer $id
+ * @property integer $id_usuario
  * @property string $nome
  * @property string $descricao
  * @property string $imagem
  *
+ * @property Usuario $idUsuario
  * @property Proposta[] $propostas
  */
 class Produto extends \yii\db\ActiveRecord
@@ -20,7 +22,6 @@ class Produto extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     public $file;
-
     public static function tableName()
     {
         return 'produto';
@@ -32,8 +33,10 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'descricao', 'imagem'], 'required'],
+            [['id_usuario', 'nome', 'descricao', 'imagem'], 'required'],
+            [['id_usuario'], 'integer'],
             [['nome', 'descricao', 'imagem'], 'string', 'max' => 255],
+            [['id_usuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['id_usuario' => 'id']],
             [['file'], 'file'],
         ];
     }
@@ -45,10 +48,19 @@ class Produto extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'id_usuario' => 'Id Usuario',
             'nome' => 'Nome',
             'descricao' => 'Descrição',
             'imagem' => 'Imagem',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdUsuario()
+    {
+        return $this->hasOne(Usuario::className(), ['id' => 'id_usuario']);
     }
 
     /**
