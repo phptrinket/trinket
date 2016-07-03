@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Usuario;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -46,13 +47,6 @@ class SiteController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-
-            'auth' => [
-
-                'class' => 'yii\authclient\AuthAction',
-                'sucessCallBack' => [$this, 'successCallBack'],
-
             ],
                 'auth' => [
                     'class' => 'yii\authclient\AuthAction',
@@ -113,10 +107,24 @@ class SiteController extends Controller
     }
 
     public function oAuthSuccess($client) {
-        // get user data from client
         $userAttributes = $client->getUserAttributes();
+        $user= New Usuario();
 
-        // do some thing with user data. for example with $userAttributes['email']
-    }
+        $user->email=$userAttributes['email'];
+        $user->username=$userAttributes['name'];
+        $user->senha=$userAttributes['name'];
+        $user->save();
+        $user = Usuario::find()->where(['email'=>$userAttributes['email']])->one();
+        if(!empty($user)){
+            Yii::$app->user->login($user);
+
+        }else{
+            // Save session attribute user from FB
+            $session = Yii::$app->session;
+            $session['attributes']=$userAttributes;
+            // redirect to form signup, variabel global set to successUrl
+            $this->successUrl = \yii\helpers\Url::to(['login']);
+        }
+}
 
 }
