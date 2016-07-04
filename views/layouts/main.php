@@ -64,7 +64,6 @@ AppAsset::register($this);
             'items' => [
                 ['label' => 'Cadastrar Produtos', 'url' => ['/produto/create']],
                 ['label' => 'Produtos', 'url' => ['/produto/index']],
-                ['label' => 'Meus Produtos', 'url' => ['/proposta/myindex']],
 
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
