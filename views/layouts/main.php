@@ -63,8 +63,8 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
                 ['label' => 'Cadastrar Produtos', 'url' => ['/produto/create']],
-                ['label' => 'Ver o que esta rolando', 'url' => ['/produto/index']],
-                ['label' => 'Minhas Propostas', 'url' => ['/proposta/index']],
+                ['label' => 'Produtos', 'url' => ['/produto/index']],
+                ['label' => 'Meus Produtos', 'url' => ['/proposta/myindex']],
 
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
