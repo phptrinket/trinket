@@ -18,16 +18,29 @@ $this->params['breadcrumbs'][] = $this->title;
    <?php foreach($dataProvider->models as $produto): ?>
        <?php if($produto->status != "Vendido") { ?>
             <div class="col-md-4 portfolio-item">
+                <?php if ((Yii::$app->user->getId()) === ($produto->id_usuario)) { ?>
+                <a href="?r=produto%2Fview&id=<?=$produto->id?>">
+                    <?php
+                    $placeholder = "http://placehold.it/700x400";
+                    $file = 'image/' . $produto->imagem;
+                    ?>
+                    <img class="img-responsive" src="<?= file_exists($file) ? $file : $placeholder ?>" alt="Imagem não disponivel"/>
+                </a>
+                <h3>
+                    <?= Html::a($produto->nome,['produto/view','id' => $produto->id]) ?>
+                </h3>
+                <?php } else { ?>
                 <a href="?r=proposta%2Fcreate&id_produto=<?=$produto->id?>">
                     <?php
-                        $placeholder = "http://placehold.it/700x400";
-                        $file = 'image/' . $produto->imagem;
+                    $placeholder = "http://placehold.it/700x400";
+                    $file = 'image/' . $produto->imagem;
                     ?>
                     <img class="img-responsive" src="<?= file_exists($file) ? $file : $placeholder ?>" alt="Imagem não disponivel"/>
                 </a>
                 <h3>
                     <?= Html::a($produto->nome,['proposta/create','id_produto' => $produto->id]) ?>
                 </h3>
+                <?php } ?>
                 <p><?=$produto->descricao?></p>
             </div>
         <?php } ?>
